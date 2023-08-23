@@ -1,0 +1,17 @@
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\bin\Debug\net6.0\BlogApp.DAL.deps.json
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\bin\Debug\net6.0\BlogApp.DAL.runtimeconfig.json
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\bin\Debug\net6.0\BlogApp.DAL.dll
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\bin\Debug\net6.0\BlogApp.DAL.pdb
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\bin\Debug\net6.0\BlogApp.Core.dll
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\bin\Debug\net6.0\BlogApp.Core.pdb
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\obj\Debug\net6.0\BlogApp.DAL.csproj.AssemblyReference.cache
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\obj\Debug\net6.0\BlogApp.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\obj\Debug\net6.0\BlogApp.DAL.AssemblyInfoInputs.cache
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\obj\Debug\net6.0\BlogApp.DAL.AssemblyInfo.cs
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\obj\Debug\net6.0\BlogApp.DAL.csproj.CoreCompileInputs.cache
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\obj\Debug\net6.0\BlogApp.DAL.csproj.CopyComplete
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\obj\Debug\net6.0\BlogApp.DAL.dll
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\obj\Debug\net6.0\refint\BlogApp.DAL.dll
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\obj\Debug\net6.0\BlogApp.DAL.pdb
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\obj\Debug\net6.0\BlogApp.DAL.genruntimeconfig.cache
+C:\Users\nshal\Desktop\BlogApp\BlogApp.DAL\obj\Debug\net6.0\ref\BlogApp.DAL.dll
