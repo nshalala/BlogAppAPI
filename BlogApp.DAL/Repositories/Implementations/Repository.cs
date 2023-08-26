@@ -22,6 +22,11 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
 		await Table.AddAsync(entity);
 	}
 
+	public void Delete (TEntity entity)
+	{
+		_context.Remove(entity);
+	}
+
 	public IQueryable<TEntity> FindAll(Expression<Func<TEntity, bool>> expression)
 	{
 		return Table.Where(expression).AsQueryable();
@@ -37,7 +42,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
 		return Table.AsQueryable();
 	}
 
-	public async Task<TEntity> GetSingleAync(Expression<Func<TEntity, bool>> expression)
+	public async Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> expression)
 	{
 		return await Table.SingleOrDefaultAsync(expression);
 	}

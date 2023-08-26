@@ -2,8 +2,12 @@ using BlogApp.DAL.Contexts;
 using BlogApp.Business;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation.AspNetCore;
-using System.Reflection;
 using BlogApp.Business.Services.Implements;
+using BlogApp.Business.Profiles;
+using BlogApp.API;
+using BlogApp.Business.Extension_Services;
+using BlogApp.Core.Entities;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,14 +22,16 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 {
 	opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
+builder.Services.AddRepositories();
 builder.Services.AddServices();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddScoped<IEnvironmentService, EnvironmentService>();
+builder.Services.AddAutoMapper(typeof(CategoryMappingProfile).Assembly);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();

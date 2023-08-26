@@ -11,12 +11,10 @@ namespace BlogApp.API.Controllers
 	public class CategoriesController : ControllerBase
 	{
 		private readonly ICategoryService _categoryService;
-		private readonly IWebHostEnvironment _env;
 
-		public CategoriesController(ICategoryService categoryService, IWebHostEnvironment env)
+		public CategoriesController(ICategoryService categoryService)
 		{
 			_categoryService = categoryService;
-			_env = env;
 		}
 
 		[HttpGet]
@@ -48,6 +46,18 @@ namespace BlogApp.API.Controllers
 		public async Task<IActionResult> Post([FromForm]CategoryCreateDto dto)
 		{
 			await _categoryService.CreateAsync(dto);
+			return NoContent();
+		}
+		[HttpPut("{id}")]
+		public async Task<IActionResult> Put(int id, [FromForm]CategoryUpdateDto dto)
+		{
+			await _categoryService.UpdateAsync(id, dto);
+			return NoContent();
+		}
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> Delete(int id)
+		{
+			await _categoryService.RemoveAsync(id);
 			return NoContent();
 		}
 	}
