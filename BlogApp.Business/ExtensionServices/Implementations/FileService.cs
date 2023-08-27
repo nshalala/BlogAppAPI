@@ -1,10 +1,10 @@
 ﻿using BlogApp.Business.Exceptions.Common;
 using BlogApp.Business.Extensions;
-using BlogApp.Business.Extension_Services.Interfaces;
 using Microsoft.AspNetCore.Http;
-using BlogApp.Business.Extension_Services;
+using BlogApp.Business.ExtensionServices;
+using BlogApp.Business.ExtensionServices.Interfaces;
 
-namespace BlogApp.Business.Extention_Services.Implementations;
+namespace BlogApp.Business.ExtensionServices.Implementations;
 
 public class FileService : IFileService
 {

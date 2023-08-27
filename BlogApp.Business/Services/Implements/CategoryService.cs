@@ -2,7 +2,7 @@
 using BlogApp.Business.DTOs.CategoryDTOs;
 using BlogApp.Business.Exceptions.CategoryExceptions;
 using BlogApp.Business.Exceptions.Common;
-using BlogApp.Business.Extension_Services.Interfaces;
+using BlogApp.Business.ExtensionServices.Interfaces;
 using BlogApp.Business.Extensions;
 using BlogApp.Business.Services.Interfaces;
 using BlogApp.Core.Entities;

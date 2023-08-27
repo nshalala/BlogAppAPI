@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace BlogApp.Business.Extension_Services.Interfaces
+namespace BlogApp.Business.ExtensionServices.Interfaces
 {
 	public interface IFileService
 	{

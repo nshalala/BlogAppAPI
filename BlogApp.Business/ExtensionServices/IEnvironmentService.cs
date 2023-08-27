@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlogApp.Business.Extension_Services
+namespace BlogApp.Business.ExtensionServices
 {
 	public interface IEnvironmentService
 	{

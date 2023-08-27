@@ -1,4 +1,4 @@
-﻿using BlogApp.Business.Extension_Services;
+﻿using BlogApp.Business.ExtensionServices;
 
 namespace BlogApp.API;
 

@@ -1,6 +1,5 @@
-﻿using BlogApp.Business.Extension_Services;
-using BlogApp.Business.Extension_Services.Interfaces;
-using BlogApp.Business.Extention_Services.Implementations;
+﻿using BlogApp.Business.ExtensionServices.Implementations;
+using BlogApp.Business.ExtensionServices.Interfaces;
 using BlogApp.Business.Services.Implements;
 using BlogApp.Business.Services.Interfaces;
 using BlogApp.DAL.Repositories.Implementations;
@@ -15,6 +14,8 @@ public static class ServiceRegistration
 	{
 		services.AddScoped<ICategoryService, CategoryService>();
 		services.AddScoped<IFileService, FileService>();
+		services.AddScoped<IUserService, UserService>();
+		services.AddScoped<ITokenHandler, TokenHandler>();
 	}
 	public static void AddRepositories(this IServiceCollection services)
 	{
