@@ -44,6 +44,7 @@ internal class Program
 		builder.Services.AddServices();
 		builder.Services.AddScoped<IEnvironmentService, EnvironmentService>();
 
+
 		builder.Services.AddAuthentication(opt =>
 		{
 			opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -3,11 +3,13 @@ using BlogApp.Business.Services.Interfaces;
 using BlogApp.Business.Exceptions.Common;
 using BlogApp.Business.Exceptions.CategoryExceptions;
 using BlogApp.Business.DTOs.CategoryDTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BlogApp.API.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
+	[Authorize(Roles = "Admin, Editor")]
 	public class CategoriesController : ControllerBase
 	{
 		private readonly ICategoryService _categoryService;

@@ -9,5 +9,7 @@ public class AppUserMappingProfile:Profile
     public AppUserMappingProfile()
     {
         CreateMap<RegisterDto, AppUser>();
+        CreateMap<AppUser, UserListItemDto>();
+        CreateMap<AppUser, UserDetailDto>();
     }
 }

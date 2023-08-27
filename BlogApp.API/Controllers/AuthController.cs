@@ -1,13 +1,11 @@
 ﻿using BlogApp.Business.DTOs.UserDtos;
 using BlogApp.Business.Services.Interfaces;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogApp.API.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	[Authorize]
 	public class AuthController : ControllerBase
 	{
 		private readonly IUserService _userService;

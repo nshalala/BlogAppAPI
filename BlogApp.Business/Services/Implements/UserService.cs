@@ -7,10 +7,6 @@ using BlogApp.Business.Services.Interfaces;
 using BlogApp.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 using System.Text;
 
 namespace BlogApp.Business.Services.Implements;
@@ -18,14 +14,58 @@ namespace BlogApp.Business.Services.Implements;
 public class UserService : IUserService
 {
 	private readonly UserManager<AppUser> _userManager;
+	private readonly RoleManager<IdentityRole> _roleManager;
 	private readonly ITokenHandler _tokenHandler;
 	private readonly IMapper _mapper;
 
-	public UserService(IMapper mapper, UserManager<AppUser> userManager, ITokenHandler tokenHandler)
+	public UserService(IMapper mapper, UserManager<AppUser> userManager, ITokenHandler tokenHandler, RoleManager<IdentityRole> roleManager)
 	{
 		_mapper = mapper;
 		_userManager = userManager;
 		_tokenHandler = tokenHandler;
+		_roleManager = roleManager;
+	}
+
+	public async Task ChangeRoleAsync(string userName, string role)
+	{
+		var user = await _userManager.FindByNameAsync(userName);
+		if (user == null) throw new UserNotFoundException();
+
+		var r = await _roleManager.Roles.AnyAsync(r => r.Name == role);
+		if (!r) throw new RoleNotFoundException();
+
+		var currentRoles = await _userManager.GetRolesAsync(user);
+		if (!currentRoles.Contains("Admin"))
+		{
+			await _userManager.RemoveFromRolesAsync(user, currentRoles);
+			await _userManager.AddToRoleAsync(user, role);
+		}else
+		{
+			throw new Exception("You can not change role of admin");
+		}
+
+	}
+
+	public async Task<List<UserListItemDto>> GetAllAsync()
+	{
+		var users = await _userManager.Users.ToListAsync();
+		var dto = _mapper.Map<List<UserListItemDto>>(users);
+        foreach (var item in dto)
+        {
+			var roles = await _userManager.GetRolesAsync(await _userManager.FindByNameAsync(item.UserName));
+			item.Role = roles[0];
+        }
+        return dto;
+	}
+
+	public async Task<UserDetailDto> GetByNameAsync(string userName)
+	{
+		var user = await _userManager.FindByNameAsync(userName);
+		if (user == null) throw new UserNotFoundException();
+		var dto = _mapper.Map<UserDetailDto>(user);
+		var roles = await _userManager.GetRolesAsync(await _userManager.FindByNameAsync(dto.UserName));
+		dto.Role = roles[0];
+		return dto;
 	}
 
 	public async Task<ResponseTokenDto> LoginAsync(LoginDto dto)
@@ -52,6 +92,8 @@ public class UserService : IUserService
             }
 			throw new RegisterFailedException(sb.ToString().TrimEnd());
         }
+		var res = await _userManager.AddToRoleAsync(user, "member");
 	}
+
 
 }
