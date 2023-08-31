@@ -13,6 +13,7 @@ using System.Security.Cryptography;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using BlogApp.DAL;
 
 internal class Program
 {
@@ -31,6 +32,7 @@ internal class Program
 		{
 			opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 		});
+		builder.Environment
 		builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 		{
 			opt.User.RequireUniqueEmail = true;
@@ -40,8 +42,8 @@ internal class Program
 			opt.SignIn.RequireConfirmedEmail = false;
 		}).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
 
-		builder.Services.AddRepositories();
 		builder.Services.AddServices();
+		builder.Services.AddRepositories();
 		builder.Services.AddScoped<IEnvironmentService, EnvironmentService>();
 
 
@@ -104,7 +106,10 @@ internal class Program
 		if (app.Environment.IsDevelopment())
 		{
 			app.UseSwagger();
-			app.UseSwaggerUI();
+			app.UseSwaggerUI(c =>
+			{
+				c.ConfigObject.AdditionalItems.Add("persistAuthorization", "true");
+			});
 		}
 
 		app.UseHttpsRedirection();

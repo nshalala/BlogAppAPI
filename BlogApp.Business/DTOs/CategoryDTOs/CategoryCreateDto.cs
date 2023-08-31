@@ -8,6 +8,7 @@ namespace BlogApp.Business.DTOs.CategoryDTOs
 	{
 		public string Name { get; set; }
 		public IFormFile Logo { get; set; }
+		public IEnumerable<int> ids { get; set; }
 	}
 	public class CategoryCreateDtoValidator : AbstractValidator<CategoryCreateDto>
 	{
@@ -22,7 +23,6 @@ namespace BlogApp.Business.DTOs.CategoryDTOs
 				.NotEmpty().WithMessage("Category image cannot be empty")
 				.Must(l => l.IsValidType("image"))
 				.Must(l => l.IsValidSize(2));
-
 		}
 	}
 }

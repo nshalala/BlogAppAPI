@@ -12,5 +12,6 @@ public class CategoryMappingProfile:Profile
 		CreateMap<CategoryUpdateDto, Category>();
 		CreateMap<Category, CategoryListItemDto>();
 		CreateMap<Category, CategoryDetailDto>();
+		CreateMap<BlogCategory, CategoryListItemDto>();
 	}
 }

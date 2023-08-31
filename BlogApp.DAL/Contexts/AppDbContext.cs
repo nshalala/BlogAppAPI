@@ -9,6 +9,8 @@ public class AppDbContext : IdentityDbContext<AppUser>
 {
 	public AppDbContext(DbContextOptions options) : base(options) { }
 	public DbSet<Category> Categories { get; set; }
+	public DbSet<Blog> Blogs { get; set; }
+	public DbSet<BlogCategory> BlogCategories { get; set; }
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

@@ -1,14 +1,12 @@
 ﻿using BlogApp.Business.Exceptions.Common;
 using BlogApp.Business.Extensions;
-using Microsoft.AspNetCore.Http;
-using BlogApp.Business.ExtensionServices;
 using BlogApp.Business.ExtensionServices.Interfaces;
-
+using Microsoft.AspNetCore.Http;
 namespace BlogApp.Business.ExtensionServices.Implementations;
 
 public class FileService : IFileService
 {
-    public IEnvironmentService _env { get; set; }
+	private readonly IEnvironmentService _env;
 
 	public FileService(IEnvironmentService env)
 	{

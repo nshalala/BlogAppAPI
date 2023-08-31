@@ -16,9 +16,7 @@ public static class ServiceRegistration
 		services.AddScoped<IFileService, FileService>();
 		services.AddScoped<IUserService, UserService>();
 		services.AddScoped<ITokenHandler, TokenHandler>();
-	}
-	public static void AddRepositories(this IServiceCollection services)
-	{
-		services.AddScoped<ICategoryRepository, CategoryRepository>();
+		services.AddScoped<IBlogService, BlogService>();
+		services.AddHttpContextAccessor();
 	}
 }
